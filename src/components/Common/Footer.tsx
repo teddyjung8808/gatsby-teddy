@@ -11,7 +11,7 @@ const FooterWrapper = styled.div`
   line-height: 1.5;
 `
 
-const Footer: FunctionComponent = function () {
+const Footer: FunctionComponent = () => {
   return (
     <FooterWrapper>
       Thank You for Visiting My Blog, Have a Good Day 😆

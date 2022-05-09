@@ -2,14 +2,16 @@ import React, { FunctionComponent } from 'react'
 
 import styled from '@emotion/styled'
 import GlobalStyle from '@Components/Common/GlobalStyle'
-import Footer from '@Components/Common/Footer'
 import Introduction from '@Components/Main/Introduction'
+import CategoryList from '@Components/Main/CategoryList'
+import Footer from '@Components/Common/Footer'
 
 const IndexPage: FunctionComponent = function () {
   return (
     <Container>
       <GlobalStyle />
       <Introduction />
+      <CategoryList selectedCategory="Web" categoryList={CATEGORY_LIST} />
       <Footer />
     </Container>
   )
@@ -20,5 +22,11 @@ const Container = styled.div`
   flex-direction: column;
   height: 100vh;
 `
+
+const CATEGORY_LIST = {
+  All: 5,
+  Web: 3,
+  Mobile: 2,
+}
 
 export default IndexPage
