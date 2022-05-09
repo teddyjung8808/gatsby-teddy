@@ -10,7 +10,7 @@
     "noImplicitReturns": true,
     "baseUrl": "./src",
     "paths": {
-      "components/*": ["./components/*"],
+      "@Components/*": ["./components/*"],
       "utils/*": ["./utils/*"],
       "hooks/*": ["./hooks/*"]
     },
