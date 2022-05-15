@@ -2,26 +2,21 @@ import React, { FunctionComponent } from 'react'
 import styled from '@emotion/styled'
 import { Link } from 'gatsby'
 
-type PostItemProps = {
-  title: string
-  date: string
-  categories: string[]
-  summary: string
-  thumbnail: string
-  link: string
-}
+import { PostFrontmatterType } from 'types/PostItem.types'
+
+type PostItemProps = PostFrontmatterType & { link: string }
 
 const PostItem: FunctionComponent<PostItemProps> = function ({
   title,
   date,
   categories,
   summary,
-  thumbnail,
+  thumbnail: { publicURL },
   link,
 }) {
   return (
     <PostItemWrapper to={link}>
-      <ThumbnailImage src={thumbnail} alt="Post Item Image" />
+      <ThumbnailImage src={publicURL} alt="Post Item Image" />
       <PostItemContent>
         <Title>{title}</Title>
         <Date>{date}</Date>
