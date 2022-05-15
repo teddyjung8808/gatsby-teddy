@@ -12,7 +12,7 @@
     "paths": {
       "@Components/*": ["./components/*"],
       "utils/*": ["./utils/*"],
-      "hooks/*": ["./hooks/*"]
+      "@Hooks/*": ["./hooks/*"]
     },
     "esModuleInterop": true,
     "skipLibCheck": true,
