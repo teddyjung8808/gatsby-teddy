@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import { graphql } from 'gatsby'
+import { IGatsbyImageData } from 'gatsby-plugin-image'
 
 import styled from '@emotion/styled'
 import GlobalStyle from '@Components/Common/GlobalStyle'
@@ -14,18 +15,26 @@ type IndexPageProps = {
     allMarkdownRemark: {
       edges: PostListItemType[]
     }
+    file: {
+      childImageSharp: {
+        gatsbyImageData: IGatsbyImageData
+      }
+    }
   }
 }
 
 const IndexPage: FunctionComponent<IndexPageProps> = function ({
   data: {
     allMarkdownRemark: { edges },
+    file: {
+      childImageSharp: { gatsbyImageData },
+    },
   },
 }) {
   return (
     <Container>
       <GlobalStyle />
-      <Introduction />
+      <Introduction profileImage={gatsbyImageData} />
       <CategoryList selectedCategory="Web" categoryList={CATEGORY_LIST} />
       <PostList posts={edges} />
       <Footer />
@@ -59,13 +68,19 @@ export const getPostList = graphql`
             date(formatString: "YYYY.MM.DD.")
             categories
             thumbnail {
-              publicURL
+              childImageSharp {
+                gatsbyImageData(width: 768, height: 400)
+              }
             }
           }
         }
       }
     }
+    file(name: { eq: "profile-image" }) {
+      childImageSharp {
+        gatsbyImageData(width: 120, height: 120)
+      }
+    }
   }
 `
-
 export default IndexPage
